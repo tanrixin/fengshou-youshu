@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-12",
+  "method": "独立重新读取国家统计局官方表2的完整数值，与作品CSV逐行逐字段比对；非官网HTML存档。",
+  "rows_checked": 64,
+  "numeric_fields_checked": 192,
+  "mismatches": 0,
+  "csv_sha256": "6dfd0a8b97d83ddf768ae33f1b22cabba8408b5c882d31a020a33d7f7325d4e9",
+  "sources": {
+    "2024": {
+      "publication_date": "2024-12-13",
+      "original_url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202412/t20241213_1957744.html",
+      "backup_url": "https://www.ghx.gov.cn/ghx/zfxxgk/fdzdgknr/sjfb/jjyxxx/art/2024/art_46b3cffaea5a42e5b6940e3541c91d2e.html"
+    },
+    "2025": {
+      "publication_date": "2025-12-12",
+      "original_url": "https://www.stats.gov.cn/sj/zxfb/202512/t20251212_1962049.html",
+      "backup_url": "https://app.www.gov.cn/govdata/gov/202512/12/541106/article.html"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102d28">
+  <meta name="description" content="《丰收有数》：2024—2025年中国粮食生产变化的交互式数据叙事。">
+  <title>丰收有数｜838万吨背后的中国粮食生产图景</title>
+  <link rel="stylesheet" href="./styles.css?v=20261019">
+  <script defer src="./data/grain-data.js?v=20261019"></script>
+  <script defer src="./calculations.js?v=20261019"></script>
+  <script defer src="./app.js?v=20261019"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="丰收有数，回到开头"><span class="brand-mark">丰</span><span>丰收有数<small>GRAIN ATLAS · 2024—2025</small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="chapter-nav">章节 ☰</button>
+    <nav id="chapter-nav" aria-label="章节导航"><a href="#ledger">01 丰收账本</a><a href="#breakdown">02 增产拆解</a><a href="#compare">03 双省对话</a><a href="#ending">把发现带走</a><a href="#methods">数据与方法</a></nav>
+    <span class="top-tag">交互式数据叙事</span>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="line"></span> 中国粮食生产观察 / 2024—2025</div>
+        <p class="hero-kicker">一年的变化，如何被看见？</p>
+        <h1 id="hero-title">丰收<span>有数</span><em>。</em></h1>
+        <p class="hero-subtitle">838万吨背后的中国粮食生产图景</p>
+        <p class="hero-text">同一个“丰收”，并不是每个地区都在增长。全国多出的约838万吨，怎样在各地的增与减中形成？又怎样在面积与单产的数量关系中被拆开？</p>
+        <div class="story-route" aria-label="阅读路线"><span>01 看见增减</span><i>→</i><span>02 拆开变化</span><i>→</i><span>03 比较发现</span></div>
+        <div class="hero-actions"><a class="button-primary" href="#ledger">开始阅读 <span aria-hidden="true">↗</span></a><a class="button-plain" href="#methods">先看数据来源 <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <div class="hero-graphic" aria-label="2024年与2025年全国粮食总产量比较">
+        <div class="grain-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hero-stat"><span class="stat-label">全国总产量净变化</span><div><strong>+837.7</strong><span>万吨</span></div><small>标题中的“838万吨”为取整表述</small></div>
+        <div class="hero-years"><div><span>2024</span><strong>70,649.9</strong><small>万吨</small></div><span class="year-arrow">→</span><div><span>2025</span><strong>71,487.6</strong><small>万吨</small></div></div>
+      </div>
+      <div class="hero-foot"><span>数据：国家统计局粮食产量公告 · 表2</span><span>向下探索 <b aria-hidden="true">↓</b></span></div>
+    </section>
+
+    <section class="interlude" aria-labelledby="question-title">
+      <div><span class="section-index">在阅读之前 / 一个猜想</span><h2 id="question-title">增加的产量，在数学分解中<br>更多对应<span>面积变化</span>，还是<span>单产变化</span>？</h2></div>
+      <div class="guess"><button type="button" data-guess="area" aria-pressed="false">我猜是面积变化 <span>↗</span></button><button type="button" data-guess="yield" aria-pressed="false">我猜是单产变化 <span>↗</span></button><p id="guess-result" role="status" aria-live="polite">先记下你的直觉，第二幕再揭晓。这里比较的是数学分解结果。</p><a class="guess-continue" href="#ledger">带着猜想，先看地区变化 ↓</a></div>
+    </section>
+
+    <section class="chapter ledger-section" id="ledger" aria-labelledby="ledger-title">
+      <div class="chapter-heading"><div><span class="section-index">CHAPTER 01 / 地区变化</span><h2 id="ledger-title">丰收<span>账本</span></h2><p>全国的净增量，来自不同地区的增与减。正负分向、共用幅度刻度，读出每个地区的变化。</p></div><div class="heading-number">01<span>/ 03</span></div></div>
+      <div class="ledger-summary" id="ledger-summary"></div>
+      <div class="harvest-flow" id="harvest-flow" aria-label="从2024年到2025年的全国粮食账目"></div>
+      <p class="ledger-takeaway" id="ledger-takeaway"></p>
+      <div class="ledger-toolbar"><div><h3>31个地区的产量变化</h3><p>2025年相对2024年 · 单位：万吨</p></div><button class="outline-button" type="button" id="reset-region">恢复全国视图 ↗</button></div>
+      <div class="ledger-chart" aria-label="各地区粮食产量变化，共用零轴与数值刻度"><div class="ledger-chart-head"><span id="ledger-view-label">增产前8名与全部减产地区</span><span>负向 ← <b>0</b> → 正向</span></div><div id="region-list" class="region-list"></div><div class="ledger-chart-foot"><span>条形长度按同一比例绘制；短条请以标注数值为准。</span><button class="outline-button ledger-expand" type="button" id="toggle-regions" aria-expanded="false" aria-controls="region-list">展开全部31个地区 ↓</button></div></div>
+      <div class="ledger-offset" id="ledger-offset"></div>
+      <div class="selected-card" id="selected-region" aria-live="polite"></div>
+      <p class="chapter-note">按官方分省公布值计算。分省数据四舍五入后，其合计可能与全国公布值略有差异；该差额单独列出。</p>
+    </section>
+
+    <section class="chapter breakdown-section" id="breakdown" aria-labelledby="breakdown-title">
+      <div class="chapter-heading"><div><span class="section-index">CHAPTER 02 / 数量关系</span><h2 id="breakdown-title">增产<span>拆解器</span></h2><p>把“面积 × 单产 = 总产量”的关系拆开，观察两种变化各对应多少模型增量。</p></div><div class="heading-number">02<span>/ 03</span></div></div>
+      <div class="panel breakdown-panel">
+        <div class="panel-top"><div><span class="tiny-label">当前观察对象</span><h3 id="breakdown-region-title">全国总计</h3></div><label class="select-label" for="breakdown-region">选择地区<select id="breakdown-region"></select></label></div>
+        <div class="reveal-intro"><p id="guess-feedback" aria-live="polite">从面积开始，再看单产，最后让两项变化相加。</p><button type="button" class="outline-button" id="reveal-national">回到全国，揭晓猜想 ↗</button></div>
+        <div class="metric-grid" id="metric-grid"></div>
+        <div class="reveal-console"><div><span class="tiny-label">一次拆解 / 三步发现</span><h4>把丰收，拆开看。</h4><p>同一零轴、同一刻度。向右增加，向左抵消；最后相加得到模型变化。</p></div><div class="reveal-controls"><button class="button-primary" type="button" id="reveal-next">01 揭晓面积贡献 →</button><button class="outline-button" type="button" id="reveal-play">自动播放 ▷</button><button class="button-plain" type="button" id="reveal-all">直接查看全部</button></div></div>
+        <div class="reveal-steps" aria-label="揭晓进度"><span data-step="1">01 面积贡献</span><span data-step="2">02 单产贡献</span><span data-step="3">03 合成变化</span></div>
+        <div class="harvest-composer" id="harvest-composer" aria-label="面积和单产两项贡献汇合为模型变化"></div>
+        <div class="contribution-layout"><div class="contribution-side"><div class="balance-scale" id="balance-scale"></div><div id="contribution-chart"></div><p class="balance-caption">两项贡献采用对称分解。切换地区后刻度会按该地区数值重新计算，请以数值比较不同地区。</p></div><div class="equation-card"><span class="equation-symbol">∑</span><span class="tiny-label">官方公布值变化 / 万吨</span><strong id="official-change">等待合成</strong><p id="residual-note">第三步会同时展示模型变化、官方变化和舍入余差。</p></div></div>
+        <div class="reveal-conclusion" id="reveal-conclusion" role="status" aria-live="polite">按“揭晓面积贡献”开始，也可以直接查看全部结果。</div>
+        <details class="formula"><summary>为什么这样拆？查看公式与解读边界 <span>+</span></summary><div><p>为了回答“面积变化和单产变化在数量上分别对应多少增量”，作品将总产量写为面积与单产的乘积，采用两年平均值作对称分解，避免把计算先后顺序带来的交互项全部分配给某一个因素。</p><p>面积贡献＝（2025面积－2024面积）× 两年平均单产 ÷ 10,000；单产贡献＝（2025单产－2024单产）× 两年平均面积 ÷ 10,000。面积单位为千公顷，单产单位为公斤/公顷，贡献单位为万吨。</p><p>两项之和等于“面积×单产”计算得到的模型变化。公告中的面积、单产、总产量均已四舍五入，因此模型变化与官方公布的产量变化之间存在微小余差。“贡献”只表示数学分解，不能解释为政策、技术或天气的因果效果。</p></div></details>
+      </div>
+    </section>
+
+    <section class="chapter compare-section" id="compare" aria-labelledby="compare-title"><div class="chapter-heading"><div><span class="section-index">CHAPTER 03 / 自主探索</span><h2 id="compare-title">双省<span>对话</span></h2><p>规模相近，变化也相近吗？先看两年的差值，再用原始数值理解两个地区的不同。</p></div><div class="heading-number">03<span>/ 03</span></div></div><div class="panel compare-panel"><div class="compare-pickers"><label for="compare-a">地区 A<select id="compare-a"></select></label><button id="swap-regions" class="swap" type="button" aria-label="交换两个地区">⇄</button><label for="compare-b">地区 B<select id="compare-b"></select></label></div><p id="compare-error" class="form-error" role="alert"></p><div class="compare-insight"><span class="tiny-label">你选出的差异 / 按数据生成</span><p id="compare-summary" aria-live="polite"></p></div><div id="compare-paths" class="compare-paths"></div><div id="compare-deltas"></div><div id="compare-charts"></div></div></section>
+
+    <section class="ending-section" id="ending" aria-labelledby="ending-title"><div class="ending-inner"><span class="section-index">EPILOGUE / 把发现带走</span><div class="ending-poster"><div><div class="poster-number">838<span>万吨</span></div><p class="poster-caption">全国粮食净增量 · 官方变化837.7万吨的取整表述</p></div><div id="poster-wheat" aria-hidden="true"></div></div><h2 id="ending-title">读懂一个增量，<br><span>看见不同的丰收。</span></h2><p id="ending-summary" class="ending-summary"></p><div class="ending-findings" id="ending-findings"></div><p class="ending-boundary">这些数字解释的是变化的数量结构。要回答政策、技术或天气为什么改变产量，还需要更多证据。</p><div class="ending-actions"><a class="button-primary" href="#breakdown">再拆一个地区 ↗</a><a class="button-plain" href="#methods">核对数据与方法 ↓</a></div></div></section>
+
+    <section class="methods-section" id="methods" aria-labelledby="methods-title"><div class="chapter-heading"><div><span class="section-index">APPENDIX / 可核验的作品</span><h2 id="methods-title">数据与<span>方法</span></h2><p>让每一个数字都能回到原始公告，让每一种表达都能说清计算边界。使用章节导航切换内容，在地区选择中探索数据；完整作品包也可在电脑浏览器中离线运行。</p></div></div><div class="method-grid"><article><span>01 / 来源</span><h3>只用两份正式公告</h3><p>采用国家统计局2024年和2025年《粮食产量数据的公告》表2。每年包含全国总计及31个省级地区的播种面积、总产量和单位面积产量。</p><div class="source-year"><strong>2024年 / 基期</strong><a class="source-local" href="./sources/2024.html" target="_blank" rel="noopener noreferrer">查看表2 · 离线核对 ↗</a><div class="source-external"><a href="https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202412/t20241213_1957744.html" target="_blank" rel="noopener noreferrer">统计局原文 ↗</a><a href="https://www.ghx.gov.cn/ghx/zfxxgk/fdzdgknr/sjfb/jjyxxx/art/2024/art_46b3cffaea5a42e5b6940e3541c91d2e.html" target="_blank" rel="noopener noreferrer">政府摘要转载 ↗</a></div></div><div class="source-year"><strong>2025年 / 对照期</strong><a class="source-local" href="./sources/2025.html" target="_blank" rel="noopener noreferrer">查看表2 · 离线核对 ↗</a><div class="source-external"><a href="https://www.stats.gov.cn/sj/zxfb/202512/t20251212_1962049.html" target="_blank" rel="noopener noreferrer">统计局原文 ↗</a><a href="https://app.www.gov.cn/govdata/gov/202512/12/541106/article.html" target="_blank" rel="noopener noreferrer">政府网转载 ↗</a></div></div><p class="source-access-note">官网无法连接时，可直接查看离线表2。离线页为作品使用数据的整理版，附原始出处；不包含公告全文。</p></article><article><span>02 / 口径</span><h3>把差额留在台面上</h3><p>全国净增量采用官方全国行计算，为837.7万吨。分省变化值求和为837.9万吨；0.2万吨差额另行保留，不改动原始数据。</p><p>数据按地区代码配对、核对两年地区集合，再计算变化值。这里的“粮食”沿用统计公告口径，不等同于单一的稻谷或居民实际消费量。</p></article><article><span>03 / 结构</span><h3>用问题组织图表</h3><p>先用地区账本回答“哪里在增减”，再用对称分解回答“面积与单产各对应多少模型变化”，最后用双省差值和原值对照支持自主发现。条长共用刻度，正负分向，避免只展示增产。</p><p>数学分解并不证明政策、技术或天气的因果效果。公式与舍入余差见第二幕。</p></article><article><span>04 / 创作</span><h3>人工决策与AI辅助</h3><p>作品由参赛人负责选题、数据核对、创意决策和最终验收；Codex辅助方案、代码与校验。文字摘要按固定计算规则生成，未调用AI模型分析统计数据。</p><p>未引入第三方图片、模型或字体文件；字形使用设备系统字体。完整创作与资源说明见作品包。</p></article></div></section>
+  </main>
+  <footer><div class="footer-brand">丰收有数<span>·</span></div><p>把变化讲清楚，把来源留下来。</p><a href="#top">回到顶部 ↑</a><small>数据来源：国家统计局 · 2024 / 2025 粮食产量公告</small></footer>
+</body>
+</html>
